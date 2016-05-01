@@ -3,6 +3,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  #GENDER_TYPES = ["Not telling","Male", "Female"]
+
+  #to upload image
   mount_uploader :profilepicture, AvatarUploader
+
+
+  has_many :courses
+
 end
