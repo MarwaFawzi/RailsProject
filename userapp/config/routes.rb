@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :courses
+  resources :courses
+  resources :courses
   get 'page/home'
 
   get 'page/about'
