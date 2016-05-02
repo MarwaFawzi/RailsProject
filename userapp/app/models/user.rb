@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   # end
 
   has_many :courses
-  has_many :users
+  has_many :lectures
+  has_many :comments
 
 end
