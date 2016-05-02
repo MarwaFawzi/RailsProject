@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+
 <h1>Listing Lectures</h1>
 
 <table>
@@ -15,6 +16,34 @@
 
   <tbody>
     <% @lectures.each do |lecture| %>
+      <div class="row">
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+
+
+            <div class="caption">
+
+              <p><%= lecture.content %></p>
+
+              <p><%=link_to like_lecture_path(lecture), class:"like", method: :put %>
+                    <button type="button" class="btn btn-info">
+                      <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center"></span>
+                      <span  class="badge"> <%=lecture.get_upvotes.size%></span>
+                    </button>
+                    <%=link_to unlike_lecture_path(lecture), class:"like", method: :put %>
+                        <button type="button" class="btn btn-info">
+
+                          <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center"></span>
+
+                          <span  class="badge"> <%=lecture.get_downvotes.size%>
+                          </span>
+
+                        </button>
+                        </p>
+            </div>
+          </div>
+        </div>
+      </div>
       <tr>
         <td><%= lecture.content %></td>
         <td><%= lecture.attachment %></td>
@@ -29,5 +58,4 @@
 </table>
 
 <br>
-
-<%= link_to 'New Lecture', new_lecture_path %>
+                          <%= link_to 'New Lecture', new_lecture_path %>

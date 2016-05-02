@@ -7,13 +7,11 @@ class User < ActiveRecord::Base
   #to upload image
   mount_uploader :profilepicture, AvatarUploader
 
-
-  # def role?(r)
-  #   role.include? r.to_s
-  # end
-
+  #Database Relations
   has_many :courses
   has_many :lectures
   has_many :comments
 
+  #To like a lecture
+  acts_as_voter
 end

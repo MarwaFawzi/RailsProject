@@ -1,4 +1,5 @@
 class CoursesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
   # GET /courses
@@ -53,7 +54,7 @@ class CoursesController < ApplicationController
 
   # DELETE /courses/1
   # DELETE /courses/1.json
-  before_filter :authenticate_user!
+
   def destroy
     @course.destroy
     respond_to do |format|
