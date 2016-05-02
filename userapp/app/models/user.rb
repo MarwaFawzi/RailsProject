@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
   mount_uploader :profilepicture, AvatarUploader
 
 
+  # def role?(r)
+  #   role.include? r.to_s
+  # end
+
   has_many :courses
+  has_many :users
 
 end
