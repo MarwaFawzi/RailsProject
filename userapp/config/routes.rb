@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   resources :comments
   resources :lectures do
     member do
-      put "like"=>"lectures#upvote"
-      put "unlike"=>"lectures#downvote"
+      put "like", "upvote"
+      put "unlike", "downvote"
     end
   end
   devise_for :admin_users, ActiveAdmin::Devise.config
