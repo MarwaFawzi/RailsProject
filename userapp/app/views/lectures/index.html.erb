@@ -47,9 +47,10 @@
       </div>
       <tr>
         <td><%= lecture.content %></td>
-        <td><%= lecture.attachment %></td>
-        <td><%= lecture.course %></td>
-        <td><%= lecture.user %></td>
+        <td><%= lecture.attachment%></td>
+        <td><%= lecture.course.try(:title) %></td>
+        <td><%= lecture.user.try(:email) %></td>
+
         <td><%= link_to 'Show', lecture %></td>
         <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
         <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>

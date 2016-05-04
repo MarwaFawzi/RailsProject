@@ -2,22 +2,22 @@
 
 <p>
   <strong>Content:</strong>
-  <%= @lecture.content %>
+  <%= @lecture.content.html_safe %>
 </p>
 
 <p>
   <strong>Attachment:</strong>
-  <%= @lecture.attachment %>
+  <%= link_to @lecture.attachment.url %>
 </p>
 
 <p>
   <strong>Course:</strong>
-  <%= @lecture.course %>
+  <%= @lecture.course.try(:title)%>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @lecture.user %>
+  <%= @lecture.user.try(:email)%>
 </p>
 
 <%= link_to 'Edit', edit_lecture_path(@lecture) %> |
