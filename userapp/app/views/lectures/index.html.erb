@@ -23,7 +23,7 @@
 
             <div class="caption">
 
-              <p><%= lecture.content %></p>
+              <p><%= lecture.content.html_safe %></p>
 
               <p><%=link_to upvote_lecture_path(lecture), class:"like", method: :put do %>
                     <button type="button" class="btn btn-info">
