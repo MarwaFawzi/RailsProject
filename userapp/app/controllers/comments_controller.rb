@@ -1,6 +1,7 @@
 class CommentsController < InheritedResources::Base
   before_action :authenticate_user!
   before_action :find_lecture
+
   def create
     @comment= @lecture.comments.create(params[:comment].permit(:comment))
     @comment.user_id = current_user.id

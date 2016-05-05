@@ -1,5 +1,11 @@
 <%@comments.each do |comment|%>
     <p><%=comment.comment%></p>
+
+    <td><%= link_to 'Show', lecture_comment_path(comment.lecture,comment) %></td>
+    <%if current_user.id==comment.user_id%>
+    <td><%= link_to 'Edit', edit_lecture_comment_path(comment.lecture,comment) %></td>
+    <td><%= link_to 'Destroy', lecture_comment_path(comment.lecture, comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%end%>
 <%end%>
 
 <%=render 'comments/form' %>
