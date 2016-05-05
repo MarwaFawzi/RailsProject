@@ -3,16 +3,16 @@
 
 <h1>Listing Lectures</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Attachment</th>
-      <th>Course</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<!--<table>-->
+  <!--<thead>-->
+    <!--<tr>-->
+      <!--<th>Content</th>-->
+      <!--<th>Attachment</th>-->
+      <!--<th>Course</th>-->
+      <!--<th>User</th>-->
+      <!--<th colspan="3"></th>-->
+    <!--</tr>-->
+  <!--</thead>-->
 
   <tbody>
     <% @lectures.each do |lecture| %>
@@ -25,39 +25,42 @@
 
               <p><%= lecture.content.html_safe %></p>
 
+
+
+              <p><%= lecture.attachment%></p>
+              <p><%= lecture.course.try(:title) %></p>
+              <p><%= lecture.user.try(:email) %></p>
+              <p><%= link_to 'Show', lecture %></p>
+
+              <%if lecture.user_id=current_user.id%>
+                  <p><%= link_to 'Edit', edit_lecture_path(lecture) %></p>
+                  <p><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+              <%end%>
+
               <p><%=link_to upvote_lecture_path(lecture), class:"like", method: :put do %>
                     <button type="button" class="btn btn-info">
                       <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center"></span>
                       <span  class="badge"> <%=lecture.get_upvotes.size%></span>
                     </button>
-                    <% end %>
+                <% end %>
 
-                    <%=link_to downvote_lecture_path(lecture), class:"like", method: :put do %>
-                        <button type="button" class="btn btn-info">
-                          <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center"></span>
+                <%=link_to downvote_lecture_path(lecture), class:"like", method: :put do %>
+                    <button type="button" class="btn btn-info">
+                      <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center"></span>
                           <span  class="badge"> <%=lecture.get_downvotes.size%>
                           </span>
 
-                        </button>
-                    <% end %>
-                        </p>
+                    </button>
+                <% end %>
+              </p>
             </div>
           </div>
         </div>
       </div>
-      <tr>
-        <td><%= lecture.content %></td>
-        <td><%= lecture.attachment%></td>
-        <td><%= lecture.course.try(:title) %></td>
-        <td><%= lecture.user.try(:email) %></td>
 
-        <td><%= link_to 'Show', lecture %></td>
-        <td><%= link_to 'Edit', edit_lecture_path(lecture) %></td>
-        <td><%= link_to 'Destroy', lecture, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
     <% end %>
   </tbody>
-</table>
+<!--</table>-->
 
 <br>
                           <%= link_to 'New Lecture', new_lecture_path %>
