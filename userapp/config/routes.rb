@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :comments
+
   resources :lectures do
+    resources :comments
     member do
       put "like", "upvote"
       put "unlike", "downvote"
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
-
+      get '/lectures/:id/download'=> 'lectures#download', as:'download'
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 

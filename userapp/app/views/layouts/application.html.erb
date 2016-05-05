@@ -35,6 +35,7 @@
           <span class="icon-bar"></span>
         </button>
         <%if user_signed_in?%>
+            <%= image_tag (current_user.profilepicture.url ) if current_user.profilepicture? %>
             <%=link_to "Sign Out" , destroy_user_session_path, method: :delete%>
         <%else%>
             <%=link_to "Sign In" , new_user_session_path%>

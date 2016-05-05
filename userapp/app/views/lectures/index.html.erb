@@ -27,7 +27,7 @@
 
 
 
-              <p><%= lecture.attachment%></p>
+              <p><%= link_to lecture.attachment,download_path(lecture) unless lecture.attachment.blank? %></p>
               <p><%= lecture.course.try(:title) %></p>
               <p><%= lecture.user.try(:email) %></p>
               <p><%= link_to 'Show', lecture %></p>

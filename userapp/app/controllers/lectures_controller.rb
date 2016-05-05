@@ -1,6 +1,6 @@
 class LecturesController < InheritedResources::Base
   before_action :authenticate_user!
-  before_action :set_lecture, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
+  before_action :set_lecture, only: [:show, :edit, :update, :destroy, :upvote, :downvote,:download]
 
 
   def create
@@ -30,6 +30,11 @@ class LecturesController < InheritedResources::Base
        redirect_to lectures_path
      end
 
+  def download
+    seekedfile = @lecture.attachment.path
+    send_file seekedfile
+  end
+
   private
   def lecture_params
     params.require(:lecture).permit(:content, :attachment, :course_id)
@@ -38,5 +43,7 @@ class LecturesController < InheritedResources::Base
   def set_lecture
     @lecture = Lecture.find(params[:id])
   end
+
+
 end
 

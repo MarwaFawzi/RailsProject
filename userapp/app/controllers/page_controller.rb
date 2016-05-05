@@ -1,7 +1,7 @@
 class PageController < ApplicationController
   def home
     if user_signed_in?
-      redirect_to lectures_path
+      redirect_to courses_path
     end
   end
 
