@@ -11,13 +11,12 @@
 </p>
 
 <p>
-  <strong>Related Lectures:</strong>
+  <strong>Related Lectures:</strong><br>
   <%if @course.lectures%>
       <% @course.lectures.each do |c|  %>
-        <h4>Content</h4>
-          <%=c.content%><br>
-        <h4>Attachment</h4>
-         <%=link_to c.attachment ,  download_path(c) unless c.attachment.blank? %>
+
+          <%=link_to c.content,lecture_path(c)%><br>
+
       <%end%>
   <%end%>
 </p>
@@ -31,4 +30,6 @@
 
 <%= link_to 'Back', courses_path %>
 <br>
-<%= link_to 'New Lecture', new_lecture_path %>
+<% if current_user.role == "instructor"%>
+  <%= link_to 'New Lecture', new_lecture_path %>
+<%end%>

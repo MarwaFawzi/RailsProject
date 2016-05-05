@@ -1,12 +1,20 @@
 source 'https://rubygems.org'
 
+#authentication
 gem 'devise', '~> 3.2'
+#For administration
 gem 'activeadmin', '~> 1.0.0.pre2'
+#For user role
 gem 'cancancan', '~> 1.10'
+#For richtext
 gem 'ckeditor_rails'
+#For like
 gem 'acts_as_votable', '~> 0.10.0'
+#For bootstrap
 gem 'bootstrap', '~> 4.0.0.alpha3'
+#For upload File
 gem 'carrierwave', '0.10.0'
+#To adjust image size
 gem "mini_magick", '3.8.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'

@@ -8,7 +8,7 @@ class CommentsController < InheritedResources::Base
 
 
       if @comment.save
-        redirect_to lecture_comments_path(@lecture)
+        redirect_to lecture_path(@lecture)
       else
         render 'new'
       end
