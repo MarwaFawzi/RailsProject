@@ -18,7 +18,9 @@ class LecturesController < InheritedResources::Base
     end
   end
 
-
+      def show
+        @comments = Comment.where(lecture_id:@lecture).order("created_at DESC")
+      end
 
   def upvote
        @lecture.upvote_from current_user

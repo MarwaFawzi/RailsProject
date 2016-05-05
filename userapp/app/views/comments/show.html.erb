@@ -7,13 +7,13 @@
 
 <p>
   <strong>Lecture:</strong>
-  <%= @comment.lecture %>
+  <%= @comment.lecture.id %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @comment.user %>
+  <%= @comment.user.email %>
 </p>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<%= link_to 'Edit', edit_lecture_comment_path(@comment.lecture,@comment) %> |
+<%= link_to 'Back', lecture_comments_path %>

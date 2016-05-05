@@ -15,9 +15,9 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.comment %></td>
-        <td><%= comment.lecture %></td>
-        <td><%= comment.user.email %></td>
+        <td><%= comment.comment if comment.comment%></td>
+        <td><%= comment.lecture.id if  comment.lecture %></td>
+        <td><%= comment.user.email if comment.user%></td>
         <td><%= link_to 'Show', lecture_comment_path(comment.lecture,comment) %></td>
         <td><%= link_to 'Edit', edit_lecture_comment_path(comment.lecture,comment) %></td>
         <td><%= link_to 'Destroy', lecture_comment_path(comment.lecture, comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -26,6 +26,6 @@
   </tbody>
 </table>
 
-<br>
 
-<%= link_to 'New Comment',new_lecture_comment_path %>
+
+
