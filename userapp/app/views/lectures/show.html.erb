@@ -20,7 +20,22 @@
   <%= @lecture.user.try(:email)%>
 </p>
 
+<p><%=link_to upvote_lecture_path(@lecture), class:"like", method: :put do %>
+      <button type="button" class="btn btn-info">
+        <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center"></span>
+        <span  class="badge"> <%=@lecture.get_upvotes.size%></span>
+      </button>
+  <% end %>
 
+  <%=link_to downvote_lecture_path(@lecture), class:"like", method: :put do %>
+      <button type="button" class="btn btn-info">
+        <span class="glyphicon glyphicon-thumbs-up glyphicon-align-center"></span>
+                          <span  class="badge"> <%=@lecture.get_downvotes.size%>
+                          </span>
+
+      </button>
+  <% end %>
+</p>
 
 
     <%if @lecture.user_id==current_user.id%>

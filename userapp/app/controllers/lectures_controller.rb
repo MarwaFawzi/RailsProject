@@ -24,12 +24,12 @@ class LecturesController < InheritedResources::Base
 
   def upvote
        @lecture.upvote_from current_user
-       redirect_to lectures_path
+       redirect_to lecture_path
     end
 
      def downvote
        @lecture.downvote_from current_user
-       redirect_to lectures_path
+       redirect_to lecture_path
      end
 
   def download
