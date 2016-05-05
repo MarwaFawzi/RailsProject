@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :course_id %><br>
-    <%= f.text_field :course_id %>
+    <%= f.select :course_id, Course.all.collect{|c| [c.title,c.id]},include_blank:true %>
   </div>
 
   <div class="actions">

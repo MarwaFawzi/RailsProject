@@ -19,6 +19,8 @@
   <strong>User:</strong>
   <%= @lecture.user.try(:email)%>
 </p>
+
+
 <%=render 'comments/form'%>
 
     <%if @lecture.user_id==current_user.id%>

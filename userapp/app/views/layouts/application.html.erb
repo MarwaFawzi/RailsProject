@@ -6,49 +6,41 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-    <!-- Latest compiled and minified CSS -->
-   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-
-    <!-- Latest compiled JavaScript -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<p class="notice"<%= notice %></p>
-<p class="alert"><%= alert %></p>
 
-<div class="container">
-
-  <nav class="navbar navbar-default navbar-fixed-top" >
-
-    <div class="container-fluid">
-      <div style="margin-top: 50px;"></div>
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%if user_signed_in?%>
-            <%= image_tag (current_user.profilepicture.url ) if current_user.profilepicture? %>
-            <%=link_to "Sign Out" , destroy_user_session_path, method: :delete%>
-        <%else%>
-            <%=link_to "Sign In" , new_user_session_path%>
-            <%=link_to "Sign Up" ,new_user_registration_path%>
-        <%end%>
-        <%=link_to "Home" ,page_home_path%>
-
-      </div>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Coursera</a>
     </div>
-      </nav>
+    <ul class="nav navbar-nav navbar-right">
+      <li class="active"><%=link_to 'Home',page_home_path%></li>
 
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <span class="caret"></span></a>
+        <% if user_signed_in? %>
+        <ul class="dropdown-menu">
+          <li> <%=link_to 'Profile',edit_user_registration_path%></li>
+          <li><%=link_to 'Lectures',lectures_path%></li>
+          <li><%=link_to "Sign Out" , destroy_user_session_path, method: :delete%></li>
+        </ul>
+            </li>
+            <li><%= image_tag (current_user.profilepicture.url ) if current_user.profilepicture? %></li>
+        </ul>
+
+        <%else%>
+            <li><%=link_to "Sign In" , new_user_session_path%></li>
+            <li><%=link_to "Sign Up" ,new_user_registration_path%></li>
+        <%end%>
+
+  </div>
+</nav>
 <%= yield %>
-</div>
+
 
 
 

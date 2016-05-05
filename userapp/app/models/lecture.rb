@@ -11,5 +11,10 @@ class Lecture < ActiveRecord::Base
   #Like a Lecture
   acts_as_votable
 
+  #Validation
+  validates :content,:course_id,:user_id,:presence => true
+
+
+
 
 end

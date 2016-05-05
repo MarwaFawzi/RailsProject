@@ -14,4 +14,8 @@ class User < ActiveRecord::Base
 
   #To like a lecture
   acts_as_voter
+
+  #Validation
+  validates :name,:dateofbirth,:gender, :presence => true
+
 end
