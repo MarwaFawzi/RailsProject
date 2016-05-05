@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
   protected
 
   def configure_permitted_parameters
@@ -15,6 +16,9 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :dateofbirth
     devise_parameter_sanitizer.for(:sign_up) << :profilepicture
     devise_parameter_sanitizer.for(:account_update) << :profilepicture
+    devise_parameter_sanitizer.for(:sign_up) << :role
+    devise_parameter_sanitizer.for(:account_update) << :role
+
   end
 
 #   # def authenticate_active_admin_user!

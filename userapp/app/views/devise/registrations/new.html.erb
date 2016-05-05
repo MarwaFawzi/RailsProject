@@ -38,9 +38,10 @@
     <div class="field">
       <%= f.label :profilepicture%><br />
       <%= f.file_field :profilepicture %>
-
-
-
+    </div>
+    <div class="field">
+      <%= f.label :role%><br />
+      <%= f.select :role , options_for_select(['instructor','user'])  %>
     </div>
   <div class="actions">
     <%= f.submit "Sign up" %>

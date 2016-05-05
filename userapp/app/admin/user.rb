@@ -7,6 +7,7 @@ ActiveAdmin.register User do
     column :dateofbirth
     column :gender
     column :profilepicture
+    column :role
     actions
 
   end
@@ -19,8 +20,9 @@ ActiveAdmin.register User do
       f.input :dateofbirth
       f.input :gender
       f.input :profilepicture
+      f.input :role
     end
     f.actions
   end
-  permit_params :name, :email, :password , :password_confirmation,:dateofbirth,:gender,:profilepicture
+  permit_params :name, :email, :password , :password_confirmation,:dateofbirth,:gender,:role,:profilepicture
 end
